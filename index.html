@@ -39,16 +39,19 @@
 
   html { scroll-behavior: smooth; }
 
+  /* ── Grid background shared by all surfaces ────────────────── */
+
   body {
     font-family: var(--font);
-    background-color: var(--bg);
+    background-color: #050000;
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.15) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.22) 1px, transparent 1px);
     background-size: 40px 40px;
     background-position: 0 0;
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    text-align: center;
   }
 
   /* ── Nav ──────────────────────────────────────────────────── */
@@ -57,7 +60,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     background-color: rgba(0,0,0,0.94);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.08) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.12) 1px, transparent 1px);
     background-size: 40px 40px;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
@@ -89,7 +92,7 @@
 
   /* ── Sections ─────────────────────────────────────────────── */
 
-  section { padding: 100px 32px; max-width: 1100px; margin: 0 auto; }
+  section { padding: 100px 32px; max-width: 1100px; margin: 0 auto; text-align: center; }
 
   .section-label {
     display: inline-block; font-size: 0.75rem; font-weight: 700;
@@ -103,7 +106,7 @@
   .section-title span { color: var(--accent); }
   .section-subtitle {
     font-size: 1.1rem; color: var(--text2); max-width: 600px;
-    margin-bottom: 48px; line-height: 1.6;
+    margin: 0 auto 48px auto; line-height: 1.6;
   }
 
   @media (max-width: 768px) {
@@ -138,7 +141,7 @@
     max-width: 680px; margin: 48px auto 0;
     background-color: var(--bg2);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.06) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     overflow: hidden; position: relative; z-index: 1;
@@ -176,13 +179,6 @@
   .quickstart .step .cmd .c { color: var(--text3); font-style: normal; }
   .quickstart .step .cmd .out { color: var(--green); }
   .quickstart .step .desc { font-size: 0.8rem; color: var(--text2); margin-top: 4px; line-height: 1.5; font-family: var(--font); }
-  .quickstart .copy-btn {
-    background: none; border: 1px solid var(--border); color: var(--text2);
-    padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; cursor: pointer;
-    margin-left: auto; flex-shrink: 0; transition: all 0.2s;
-    font-family: var(--font);
-  }
-  .quickstart .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 
   @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
@@ -198,10 +194,11 @@
   .card {
     background-color: var(--bg2);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.06) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 28px; transition: transform 0.2s, border-color 0.2s;
+    padding: 28px; text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
   }
   .card:hover { transform: translateY(-2px); border-color: var(--accent); }
   .card.danger { border-left: 3px solid var(--accent); }
@@ -211,22 +208,24 @@
   .card .example {
     margin-top: 12px; padding: 10px 14px; background: rgba(0,0,0,0.4);
     border-radius: 6px; font-family: var(--mono); font-size: 0.78rem;
-    color: var(--red); word-break: break-all;
+    color: var(--red); word-break: break-all; text-align: center;
   }
 
   .feature-card {
     background-color: var(--bg2);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.05) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.07) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 32px; transition: all 0.2s;
+    padding: 32px; text-align: center;
+    transition: all 0.2s;
   }
   .feature-card:hover { border-color: var(--accent); }
   .feature-card .f-icon {
     width: 48px; height: 48px; border-radius: 12px;
     background: var(--accent-dim); display: flex; align-items: center;
-    justify-content: center; font-size: 1.3rem; margin-bottom: 16px;
+    justify-content: center; font-size: 1.3rem;
+    margin: 0 auto 16px auto;
   }
   .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
   .feature-card p { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
@@ -235,28 +234,33 @@
 
   .pipeline { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
   .pipe-step {
-    display: flex; gap: 24px; align-items: flex-start; padding: 32px;
+    display: flex; gap: 24px; align-items: center; padding: 32px;
     background-color: var(--bg2);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.06) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
-    transition: border-color 0.2s;
+    transition: border-color 0.2s; text-align: center;
   }
   .pipe-step:hover { border-color: var(--accent); }
   .pipe-step .num {
-    width: 48px; height: 48px; border-radius: 12px;
+    width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
     background: var(--accent-dim); color: var(--accent);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 1.2rem; flex-shrink: 0;
+    font-weight: 800; font-size: 1.2rem;
   }
+  .pipe-step .info { flex: 1; }
   .pipe-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
-  .pipe-step p { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
-  .pipe-step .tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .pipe-step p { font-size: 0.9rem; color: var(--text2); line-height: 1.6; margin: 0 auto; max-width: 600px; }
+  .pipe-step .tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
   .pipe-step .tags span {
     font-size: 0.7rem; font-weight: 600; padding: 3px 10px;
     border-radius: 100px; background: var(--accent-dim); color: var(--accent);
     text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .pipe-step { flex-direction: column; text-align: center; }
   }
 
   /* ── Stats ────────────────────────────────────────────────── */
@@ -265,7 +269,7 @@
   .stat-card {
     background-color: var(--bg2);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.05) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.07) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 28px; text-align: center;
@@ -311,7 +315,7 @@
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
     background-image:
-      radial-gradient(circle at center, rgba(254, 165, 114, 0.06) 0.8px, transparent 0.8px);
+      radial-gradient(circle at center, rgba(254, 165, 114, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
   }
   footer .social-links { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
@@ -473,7 +477,7 @@
   <div class="pipeline">
     <div class="pipe-step">
       <div class="num">0</div>
-      <div>
+      <div class="info">
         <h3>Per-Agent Rulesets</h3>
         <p>YAML-defined rules per agent with hot-reload. Whitelist trusted patterns, blacklist known attacks, define custom regex rules. Each agent gets its own threshold.</p>
         <div class="tags"><span>YAML</span><span>Hot-Reload</span><span>Per-Agent</span></div>
@@ -481,7 +485,7 @@
     </div>
     <div class="pipe-step">
       <div class="num">1</div>
-      <div>
+      <div class="info">
         <h3>Signature Detection</h3>
         <p>20+ regex patterns covering known attack signatures — system overrides, prompt leaks, delimiter injection, goal hijacking. Catches standard attacks instantly.</p>
         <div class="tags"><span>RegEx</span><span>Signature-Based</span></div>
@@ -489,7 +493,7 @@
     </div>
     <div class="pipe-step">
       <div class="num">2</div>
-      <div>
+      <div class="info">
         <h3>ML Ensemble</h3>
         <p>TF-IDF + Logistic Regression trained on 140+ labeled examples across 9 attack categories. Always-on feature-based fallback. Combined confidence scoring.</p>
         <div class="tags"><span>ML</span><span>TF-IDF</span><span>Ensemble</span></div>
@@ -497,7 +501,7 @@
     </div>
     <div class="pipe-step">
       <div class="num">3</div>
-      <div>
+      <div class="info">
         <h3>Structural Analysis</h3>
         <p>Detects suspicious structural properties — abnormal length, special character density, Unicode tricks, delimiter nesting, escape sequences.</p>
         <div class="tags"><span>Anomaly</span><span>Heuristic</span></div>
