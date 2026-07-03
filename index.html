@@ -86,6 +86,23 @@
   nav .links .social svg { width: 16px; height: 16px; fill: var(--text2); }
   nav .links .social a:hover svg { fill: var(--text); }
 
+  /* ── Star Button ──────────────────────────────── */
+  .star-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 8px;
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text2); font-size: 0.8rem; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.2s; font-family: var(--font);
+  }
+  .star-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+  .star-btn svg { width: 14px; height: 14px; fill: currentColor; }
+  .star-btn .count { font-variant-numeric: tabular-nums; }
+  .star-btn.hero-star {
+    padding: 10px 20px; font-size: 0.9rem; margin-top: 20px;
+    position: relative; z-index: 1; border-radius: 12px;
+  }
+
   @media (max-width: 768px) {
     nav { padding: 0 16px; }
     nav .links { gap: 12px; }
@@ -365,6 +382,10 @@
     <a href="#features" class="nav-link">Features</a>
     <a href="#start" class="nav-link">Start</a>
     <a href="/download" class="nav-link">Download</a>
+    <a href="https://github.com/jepspows/firewall" target="_blank" rel="noopener" class="star-btn" id="nav-star">
+      <svg viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+      <span class="count" id="star-count-nav">★</span>
+    </a>
     <div class="social">
       <a href="https://github.com/jepspows/firewall" target="_blank" rel="noopener" aria-label="GitHub">
         <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -383,6 +404,10 @@
   <p class="tagline">
     A lightweight, self-hostable proxy that protects AI agents from prompt injection attacks. Classifies and blocks malicious prompts in real-time. Sub-millisecond. Zero API calls. MIT.
   </p>
+  <a href="https://github.com/jepspows/firewall" target="_blank" rel="noopener" class="star-btn hero-star" id="hero-star">
+    <svg viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/></svg>
+    Star on GitHub · <span class="count" id="star-count-hero">★</span>
+  </a>
 </div>
 
 <!-- Quick Start -->
@@ -643,12 +668,13 @@
   </p>
 </footer>
 <script>
+// ── Typewriter ──────────────────────────────────────────────
 (function() {
   const el = document.getElementById('hero-title');
   const text = 'fire';
   const accent = 'wall';
   let i = 0;
-  let phase = 0; // 0 = 'fire', 1 = 'wall'
+  let phase = 0;
   let cursor = null;
 
   function addCursor() {
@@ -684,6 +710,44 @@
 
   type();
 })();
+
+// ── Live Star Count ─────────────────────────────────────────
+(async function() {
+  const ids = ['star-count-nav', 'star-count-hero'];
+  const fmt = n => n >= 1000 ? (n/1000).toFixed(1).replace(/\.0$/, '') + 'k' : n;
+  try {
+    const r = await fetch('https://api.github.com/repos/jepspows/firewall');
+    const d = await r.json();
+    const stars = d.stargazers_count || 0;
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = fmt(stars);
+    });
+  } catch (e) {
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = '';
+    });
+  }
+})();
+
+// ── Copy to Clipboard ───────────────────────────────────────
+document.querySelectorAll('.quickstart .cmd').forEach(el => {
+  const text = el.textContent.trim();
+  if (!text || text.startsWith('#') || text.startsWith('→')) return;
+  el.style.cursor = 'pointer';
+  el.title = 'Click to copy';
+  el.addEventListener('click', async () => {
+    const cmd = text.replace(/\\\n\s*/g, ' ').replace(/\s+/g, ' ').trim();
+    try {
+      await navigator.clipboard.writeText(cmd);
+      const orig = el.textContent;
+      el.textContent = 'Copied!';
+      el.style.color = 'var(--accent)';
+      setTimeout(() => { el.textContent = orig; el.style.color = ''; }, 1500);
+    } catch (e) {}
+  });
+});
 </script>
 </body>
 </html>
