@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1500px; height: 500px;
+    background: #000000;
+    background-image:
+      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Glow orbs */
+  body::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse at center, rgba(204,255,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(204,255,0,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Top accent bar — removed */
+
+  .content {
+    position: relative; z-index: 5;
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+    gap: 24px;
+  }
+
+  .logo-row {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .logo-img {
+    width: 80px; height: 80px;
+    border-radius: 20px;
+    border: 3px solid #CCFF00;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(204,255,0,0.25);
+  }
+  .logo-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .brand-name {
+    font-size: 72px; font-weight: 900;
+    letter-spacing: -2px;
+    color: #ffffff;
+  }
+  .brand-name span {
+    color: #CCFF00;
+  }
+
+  .tagline {
+    font-size: 22px; color: #999;
+    font-weight: 400; letter-spacing: -0.3px;
+  }
+
+  .pills {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    justify-content: center;
+  }
+  .pill {
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid rgba(204,255,0,0.3);
+    background: rgba(204,255,0,0.06);
+    color: #CCFF00;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .handle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; color: #666;
+    letter-spacing: 0.5px;
+  }
+  .handle span { color: #CCFF00; }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="logo-row">
+      <div class="logo-img">
+        <img src="logo.png" alt="Firewall">
+      </div>
+      <div class="brand-name">fire<span>wall</span></div>
+    </div>
+
+    <div class="tagline">Prompt Injection Firewall for AI Agents</div>
+
+    <div class="pills">
+      <span class="pill">Sub-Millisecond</span>
+      <span class="pill">Self-Hosted</span>
+      <span class="pill">4-Layer Detection</span>
+      <span class="pill">MIT Licensed</span>
+      <span class="pill">Open Source</span>
+    </div>
+  </div>
+</body>
+</html>
