@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Firewall — Prompt Injection Firewall for AI Agents</title>
 <meta name="description" content="Firewall is a lightweight, self-hostable proxy that protects AI agents from prompt injection attacks in real-time. Sub-millisecond latency. MIT licensed.">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:title" content="Firewall — Prompt Injection Firewall for AI Agents">
 <meta property="og:description" content="Protect your AI agents from prompt injection. Real-time. Self-hosted. Sub-ms latency. MIT.">
 <meta property="og:image" content="logo.png">
@@ -17,19 +17,19 @@
 <link rel="icon" type="image/png" href="logo.png">
 <style>
   :root {
-    --bg: #000000;
-    --bg2: rgba(10, 10, 10, 0.85);
-    --bg3: rgba(17, 17, 17, 0.9);
-    --border: #1a1a1a;
-    --text: #e0e0e0;
-    --text2: #999999;
-    --text3: #666666;
-    --accent: #CCFF00;
-    --accent-glow: rgba(204, 255, 0, 0.25);
-    --accent-dim: rgba(204, 255, 0, 0.1);
-    --green: #22c55e;
-    --red: #ef4444;
-    --yellow: #eab308;
+    --bg: #ffffff;
+    --bg2: #f5f5f5;
+    --bg3: #eeeeee;
+    --border: #e0e0e0;
+    --text: #000000;
+    --text2: #555555;
+    --text3: #999999;
+    --accent: #000000;
+    --accent-glow: rgba(0, 0, 0, 0.08);
+    --accent-dim: rgba(0, 0, 0, 0.05);
+    --green: #16a34a;
+    --red: #dc2626;
+    --yellow: #ca8a04;
     --radius: 12px;
     --font: 'Inter', system-ui, -apple-system, sans-serif;
     --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -43,12 +43,7 @@
 
   body {
     font-family: var(--font);
-    background-color: #050000;
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.06) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: 0 0;
+    background-color: #ffffff;
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -59,11 +54,7 @@
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background-color: rgba(0,0,0,0.94);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-color: rgba(255,255,255,0.94);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 32px; height: 64px;
@@ -80,7 +71,7 @@
   nav .links .social a {
     width: 32px; height: 32px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    background: var(--bg3); transition: all 0.2s;
+    background: var(--bg3); border: 1px solid var(--border); transition: all 0.2s;
   }
   nav .links .social a:hover { background: var(--accent-dim); }
   nav .links .social svg { width: 16px; height: 16px; fill: var(--text2); }
@@ -91,7 +82,7 @@
     display: inline-flex; align-items: center; gap: 6px;
     padding: 6px 14px; border-radius: 8px;
     background: var(--bg3); border: 1px solid var(--border);
-    color: var(--text2); font-size: 0.8rem; font-weight: 600;
+    color: var(--text); font-size: 0.8rem; font-weight: 600;
     text-decoration: none; cursor: pointer;
     transition: all 0.2s; font-family: var(--font);
   }
@@ -170,18 +161,14 @@
   .quickstart {
     max-width: 680px; margin: 48px auto 0;
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     overflow: hidden; position: relative; z-index: 1;
     text-align: left;
-    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
   }
   .quickstart .bar {
     display: flex; gap: 8px; padding: 14px 16px;
-    background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid var(--border);
+    background: var(--bg3); border-bottom: 1px solid var(--border);
     align-items: center;
   }
   .quickstart .bar .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -224,10 +211,6 @@
 
   .card {
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 28px; text-align: center;
     transition: transform 0.2s, border-color 0.2s;
@@ -238,17 +221,13 @@
   .card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
   .card p { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
   .card .example {
-    margin-top: 12px; padding: 10px 14px; background: rgba(0,0,0,0.4);
+    margin-top: 12px; padding: 10px 14px; background: rgba(0,0,0,0.05);
     border-radius: 6px; font-family: var(--mono); font-size: 0.78rem;
     color: var(--red); word-break: break-all; text-align: center;
   }
 
   .feature-card {
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.035) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 32px; text-align: center;
     transition: all 0.2s;
@@ -269,10 +248,6 @@
   .pipe-step {
     display: flex; gap: 24px; align-items: center; padding: 32px;
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     transition: border-color 0.2s; text-align: center;
   }
@@ -302,10 +277,6 @@
   .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
   .stat-card {
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.035) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 28px; text-align: center;
   }
@@ -323,7 +294,7 @@
 
   .cta {
     text-align: center; padding: 80px 32px;
-    background: radial-gradient(ellipse at center, var(--accent-dim) 0%, transparent 70%);
+    background: var(--bg2);
   }
   .cta h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
   .cta h2 span { color: var(--accent); }
@@ -348,11 +319,7 @@
   footer {
     border-top: 1px solid var(--border); padding: 48px 32px 32px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-color: var(--bg2);
   }
   footer .social-links { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
   footer .social-links a {

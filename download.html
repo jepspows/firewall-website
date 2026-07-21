@@ -14,17 +14,17 @@
 <link rel="icon" type="image/png" href="logo.png">
 <style>
   :root {
-    --bg: #000000;
-    --bg2: rgba(10, 10, 10, 0.85);
-    --bg3: rgba(17, 17, 17, 0.9);
-    --border: #1a1a1a;
-    --text: #e0e0e0;
-    --text2: #999999;
-    --text3: #666666;
-    --accent: #CCFF00;
-    --accent-glow: rgba(204, 255, 0, 0.25);
-    --accent-dim: rgba(204, 255, 0, 0.1);
-    --green: #22c55e;
+    --bg: #ffffff;
+    --bg2: #f5f5f5;
+    --bg3: #eeeeee;
+    --border: #e0e0e0;
+    --text: #000000;
+    --text2: #555555;
+    --text3: #999999;
+    --accent: #000000;
+    --accent-glow: rgba(0, 0, 0, 0.08);
+    --accent-dim: rgba(0, 0, 0, 0.05);
+    --green: #16a34a;
     --blue: #3b82f6;
     --blue-dim: rgba(59, 130, 246, 0.1);
     --radius: 12px;
@@ -38,12 +38,7 @@
 
   body {
     font-family: var(--font);
-    background-color: #050000;
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.06) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: 0 0;
+    background-color: #ffffff;
     color: var(--text);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -53,11 +48,7 @@
   /* ── Nav ──────────────────────────────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background-color: rgba(0,0,0,0.94);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-color: rgba(255,255,255,0.94);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 32px; height: 64px;
@@ -75,7 +66,7 @@
   nav .links .social a {
     width: 32px; height: 32px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    background: var(--bg3); transition: all 0.2s;
+    background: var(--bg3); border: 1px solid var(--border); transition: all 0.2s;
   }
   nav .links .social a:hover { background: var(--accent-dim); }
   nav .links .social svg { width: 16px; height: 16px; fill: var(--text2); }
@@ -144,10 +135,6 @@
 
   .dl-card {
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 36px 28px; text-align: center;
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
@@ -198,10 +185,6 @@
 
   .step-card {
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 28px; text-align: center;
   }
@@ -219,10 +202,6 @@
 
   .benefit-card {
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.035) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 28px; text-align: center;
     transition: border-color 0.2s;
@@ -236,10 +215,6 @@
   .req-card {
     max-width: 680px; margin: 48px auto 0;
     background-color: var(--bg2);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 32px; text-align: left;
   }
@@ -252,7 +227,7 @@
   /* ── CTA ──────────────────────────────────────────────────── */
   .cta {
     text-align: center; padding: 80px 32px;
-    background: radial-gradient(ellipse at center, var(--accent-dim) 0%, transparent 70%);
+    background: var(--bg2);
   }
   .cta h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
   .cta h2 span { color: var(--accent); }
@@ -270,11 +245,7 @@
   footer {
     border-top: 1px solid var(--border); padding: 48px 32px 32px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    background-image:
-      linear-gradient(rgba(204, 255, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204, 255, 0, 0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-color: var(--bg2);
   }
   footer .social-links { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
   footer .social-links a {
@@ -401,7 +372,7 @@
 </section>
 
 <!-- Troubleshooting -->
-<div style="max-width:680px;margin:32px auto 0;padding:20px 24px;background:rgba(224,64,0,0.06);border:1px solid rgba(224,64,0,0.2);border-radius:12px;text-align:left">
+<div style="max-width:680px;margin:32px auto 0;padding:20px 24px;background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.2);border-radius:12px;text-align:left">
   <p style="font-size:0.82rem;color:#e0e0e0;margin:0;line-height:1.6">
     <strong style="color:#e04000">Troubleshooting:</strong>
     If Windows says <em>"another program is using this file"</em> or <em>"Windows protected your PC"</em> — this is normal for unsigned executables downloaded from the internet. Windows Defender is scanning the file. Wait 30 seconds after downloading, then right-click <strong>Properties → Unblock</strong>. If SmartScreen blocks it, click <strong>"More info" → "Run anyway"</strong>.
